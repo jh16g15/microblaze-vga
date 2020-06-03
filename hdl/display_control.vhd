@@ -94,6 +94,10 @@ architecture rtl of display_control is
     signal vga_g2 : std_logic_vector(3 downto 0);
     signal vga_b2 : std_logic_vector(3 downto 0);
     
+    signal char_x_slv : std_logic_vector(15 downto 0); 
+    signal make_char_green : std_logic;
+    signal make_char_red : std_logic;
+    
 begin
     
     -- Char Address mapping - which char we are in from the mem
@@ -110,26 +114,31 @@ begin
     -- need to give 2 cycles of time to "go back" to when these chars were selected
     
     -- we want bit 7 when we are in cycle 0 for the character row
-    vga_r2 <= X"f" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' else x"0";
-    vga_g2 <= X"f" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' else x"0";
-    vga_b2 <= X"f" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' else x"0";
+    vga_r2 <= X"f" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' and make_char_red = '1' else x"0";
+    vga_g2 <= X"f" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' and make_char_green = '1' else x"0";
+    vga_b2 <= X"0" when font_line(7 - to_integer(to_unsigned(h_count_d2, 32)(2 downto 0))) = '1' and active_area = '1' else x"0";
         
     
-    -- add a 1 pixel green border to check alignment
+    -- add a 1 pixel blue border to check alignment
     -- we need to use the counters we are using for the sync signal generation
     process(h_count_d2, v_count_d2) is
     begin
-        if ( h_count_d2 = 0 or h_count_d2 = END_ACTIVE_X-1 or v_count_d2 = 0 or v_count_d2 = END_ACTIVE_Y-1) then
-            vga_r <= x"0";
-            vga_g <= x"F";
-            vga_b <= x"0";
+        if active_area = '1' then -- remove this when we remove the border, as it's checked above
+            if ( h_count_d2 = 0 or h_count_d2 = END_ACTIVE_X-1 or v_count_d2 = 0 or v_count_d2 = END_ACTIVE_Y-1) then
+                vga_r <= vga_r2;
+                vga_g <= vga_g2;
+                vga_b <= X"f";
+            else
+                vga_r <= vga_r2;
+                vga_g <= vga_g2;
+                vga_b <= vga_b2;
+            
+            end if;
         else
-            vga_r <= vga_r2;
-            vga_g <= vga_g2;
-            vga_b <= vga_b2;
-        
+            vga_r <= x"0";
+            vga_g <= x"0";
+            vga_b <= x"0";
         end if;
-    
     end process;
    
         
@@ -214,14 +223,29 @@ begin
     
     -- these all use the earliest h/v_count as its the start of the pipeline
     font_row <= to_integer(to_unsigned(v_count, 32)(3 downto 0)); -- bottom 4 bits of v_count
-    -- temp char display test - this will eventually come from a text_ram
     
+    -- temp char display test - this will eventually come from a 
     process(char_address) is 
     begin
         if char_address = 0 or char_address = 159 then
             charcode_to_display <= x"008";
         elsif char_address = 10080 or char_address = 10239 then
             charcode_to_display <= x"00a";
+        elsif char_address >= 160 and char_address < 290 then
+            charcode_to_display <= char_address - to_unsigned(160, 12);
+        elsif char_address = 320 then
+            charcode_to_display <= x"008";
+        -- check for artifacting
+        elsif char_address = 481 then
+            charcode_to_display <= x"039"; -- 9
+        elsif char_address = 160 * 4 + 1 then
+            charcode_to_display <= x"037";  -- 7
+        elsif char_address = 160 * 4 + 2 then
+            charcode_to_display <= x"038";  -- 8
+        elsif char_address = 160 * 4 + 3 then
+            charcode_to_display <= x"039";  -- 9
+        elsif char_address = 160 * 4 + 4 then
+            charcode_to_display <= x"03a";  -- :
         else
             charcode_to_display <= x"000";
         end if;
@@ -230,11 +254,10 @@ begin
     end process;
     
 --    charcode_to_display(ADDR_W-1 downto 8) <= (others => '0');
---    charcode_to_display(7 downto 0) <= to_unsigned(char_address, 32)(7 downto 0); -- 0 to 255
-    
-    
+--    charcode_to_display(7 downto 0) <= to_unsigned(char_address, 32)(7 downto 0); -- 0 to 
+
     charcode_base_address <= shift_left(charcode_to_display, 4); -- charcode*16 
-    
+    font_line <= dob;
     read_font_line : process(pixelclk) 
     -- read_font_line : process(h_count) 
     begin
@@ -246,20 +269,18 @@ begin
                 enb <= '1';
                 -- temp display char select
                 addrb <= std_logic_vector(charcode_base_address + font_row); -- (0 to 255) * 16 + vcount % 16
+                char_x_slv <= std_logic_vector(to_unsigned(char_x, 16));
             end if;
         
         end if;
     end process;
     
-	font_line <= dob;
+    -- alternate character colouring
+    make_char_green <= char_x_slv(0);
+    make_char_red <= not char_x_slv(0);
 	
-    -- read_font_bit : process(pixelclk)
-    -- begin
-        -- if rising_edge(pixelclk) then
-            -- if enb = '1' then
-                -- font_line <= dob;
-            -- end if; 
-        -- end if;
-    -- end process;
+	
+	
+
     
 end rtl;
