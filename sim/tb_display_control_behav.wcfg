@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="72086388000fs"></ZoomStartTime>
-      <ZoomEndTime time="72087101001fs"></ZoomEndTime>
-      <Cursor1Time time="72086600000fs"></Cursor1Time>
+      <ZoomStartTime time="405832fs"></ZoomStartTime>
+      <ZoomEndTime time="1520845fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="220"></NameColumnWidth>
-      <ValueColumnWidth column_width="98"></ValueColumnWidth>
+      <ValueColumnWidth column_width="94"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="27" />
+   <WVObjectSize size="29" />
    <wvobject fp_name="/tb_display_control/pixelclk_108" type="logic">
       <obj_property name="ElementShortName">pixelclk_108</obj_property>
       <obj_property name="ObjectShortName">pixelclk_108</obj_property>
@@ -88,6 +88,14 @@
    <wvobject fp_name="/tb_display_control/u_display_control/char_address" type="other">
       <obj_property name="ElementShortName">char_address</obj_property>
       <obj_property name="ObjectShortName">char_address</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_display_control/u_display_control/make_char_green" type="logic">
+      <obj_property name="ElementShortName">make_char_green</obj_property>
+      <obj_property name="ObjectShortName">make_char_green</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_display_control/u_display_control/make_char_red" type="logic">
+      <obj_property name="ElementShortName">make_char_red</obj_property>
+      <obj_property name="ObjectShortName">make_char_red</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_display_control/u_display_control/addrb" type="array">
       <obj_property name="ElementShortName">addrb[11:0]</obj_property>
