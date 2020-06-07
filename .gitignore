@@ -2,6 +2,8 @@
 
 # ignore Vivado folders
 riscv_cpu.*/
+# and project files
+*.xpr
 
 # ignore IP files except *.xci
 /ip/*/*
@@ -21,3 +23,4 @@ ip_upgrade.log
 
 # ignore software build directory
 /software/build/
+
