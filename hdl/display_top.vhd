@@ -108,10 +108,20 @@ clk_sel_25MHz : if G_USE_640x480_CLOCKS = true generate
     );
 end generate clk_sel_25MHz;
 
-    u_display_control : entity work.display_control
+--    u_display_control : entity work.display_control
+--    port map( 
+--        pixelclk    => pixelclk_108,
+--        reset_n     => reset_n,
+--        vga_hs      => VGA_HS,
+--        vga_vs      => VGA_VS,
+--        vga_g       => VGA_GREEN,
+--        vga_r       => VGA_RED,
+--        vga_b       => VGA_BLUE
+--    );
+    u_display_control : entity work.display_text_controller
     port map( 
         pixelclk    => pixelclk_108,
-        reset_n     => reset_n,
+        areset_n     => reset_n,
         vga_hs      => VGA_HS,
         vga_vs      => VGA_VS,
         vga_g       => VGA_GREEN,

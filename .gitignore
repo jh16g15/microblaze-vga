@@ -1,0 +1,23 @@
+# .gitignore
+
+# ignore Vivado folders
+riscv_cpu.*/
+
+# ignore IP files except *.xci
+/ip/*/*
+!/ip/*/*.xci
+
+# ignore autosave docs
+/docs/~*
+/docs/*\#
+/tools/~*
+/tools/*\#
+
+# ignore vivado logs
+vivado.log
+vivado.jou
+vivado_pid*
+ip_upgrade.log
+
+# ignore software build directory
+/software/build/

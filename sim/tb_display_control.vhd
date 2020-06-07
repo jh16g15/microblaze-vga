@@ -65,10 +65,10 @@ begin
     end process;
     
 
-    u_display_control : entity work.display_control
+    u_display_control : entity work.display_text_controller
     port map( 
         pixelclk    => pixelclk_108,
-        reset_n     => reset_n,
+        areset_n     => reset_n,
         vga_hs      => VGA_HS,
         vga_vs      => VGA_VS,
         vga_g       => VGA_GREEN,

@@ -268,8 +268,14 @@ output_reg_proc : process(pixelclk) is begin
     if rising_edge(pixelclk) then
         if (h_count_d3 < END_ACTIVE_X) and (v_count_d3 < END_ACTIVE_Y) then
             active_area <= '1';
+            vga_r <= colour_selected(11 downto 8);
+            vga_g <= colour_selected( 7 downto 4);
+            vga_b <= colour_selected( 3 downto 0);
         else
             active_area <= '0';
+            vga_r <= x"0";
+            vga_g <= x"0";
+            vga_b <= x"0";
         end if;
         
         if (h_count_d3 >= END_FPORCH_X) and (h_count_d3 < END_SYNC_X) then
@@ -284,9 +290,7 @@ output_reg_proc : process(pixelclk) is begin
             vga_vs <= not ACTIVE_VS;
         end if;
         
-        vga_r <= colour_selected(11 downto 8);
-        vga_g <= colour_selected( 7 downto 4);
-        vga_b <= colour_selected( 3 downto 0);
+  
         
     end if;
 end process;

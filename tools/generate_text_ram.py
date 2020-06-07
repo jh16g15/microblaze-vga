@@ -78,6 +78,14 @@ screen_array = [[{"char" : 0, "fg" : fg_colour_map["white"], "bg" : bg_colour_ma
     
 # print(get_18b_string(ord('A'), 1, 0))
 
+for i in range(0, 32):
+    for j in range(160):
+        screen_array[i][j]['bg'] = bg_colour_map["blue"]
+for i in range(32, 64):
+    for j in range(160):
+        screen_array[i][j]['bg'] = bg_colour_map["black"]
+        
+# Test chars down side of the screen
 screen_array[0][0]['char'] = ord('A')
 screen_array[0][0]['fg'] = fg_colour_map["white"]
 screen_array[0][0]['bg'] = bg_colour_map["blue"]
@@ -87,7 +95,17 @@ screen_array[1][0]['bg'] = bg_colour_map["green"]
 screen_array[2][0]['char'] = ord('\\')
 screen_array[2][0]['fg'] = fg_colour_map["white"]
 screen_array[2][0]['bg'] = bg_colour_map["red"]
+screen_array[3][0]['char'] = ord('D')
+screen_array[3][0]['fg'] = fg_colour_map["white"]
+screen_array[3][0]['bg'] = bg_colour_map["magenta"]
+screen_array[4][0]['char'] = ord('E')
+screen_array[4][0]['fg'] = fg_colour_map["white"]
+screen_array[4][0]['bg'] = bg_colour_map["cyan"]
+screen_array[5][0]['char'] = ord('F')
+screen_array[5][0]['fg'] = fg_colour_map["white"]
+screen_array[5][0]['bg'] = bg_colour_map["red"]
 
+# Top Row Chars
 screen_array[0][1]['char'] = ord('A')
 screen_array[0][1]['fg'] = fg_colour_map["magenta"]
 screen_array[0][1]['bg'] = bg_colour_map["cyan"]
@@ -106,12 +124,15 @@ for i in range(160):
     screen_array[6][i]['char'] = ord(i_str[1]) # tens
     screen_array[7][i]['char'] = ord(i_str[2]) # units
     
-# This doesn't behave as expected
-# for i in range(64):
-    # for j in range(160):
-        # print("screen_array[" + str(i) + "][" + str(j) + "]['bg']")
-        # screen_array[i][j]['bg'] = bg_colour_map["red"]
-        
+for i in range(160):
+    i_str = format(i, '03d')
+    screen_array[40][i]['char'] = ord(i_str[0]) # hundreds
+    screen_array[41][i]['char'] = ord(i_str[1]) # tens
+    screen_array[42][i]['char'] = ord(i_str[2]) # units
+    
+    
+
+      
 
 
 
