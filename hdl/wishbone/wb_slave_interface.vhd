@@ -31,6 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+use work.wb_pkg.all;
+
 entity wb_slave_interface is
 Generic(
     WB_DAT_W   : integer := 32;
@@ -40,20 +42,20 @@ Generic(
 Port (
     wb_clk_i    : in  std_logic;        -- clock
     wb_rst_i    : in  std_logic;        -- reset
-    wb_adr_i    : in  std_logic_vector(WB_ADR_W-1 downto 0);  -- address
-    wb_dat_i    : in  std_logic_vector(WB_DAT_W-1 downto 0);  -- write data
-    wb_dat_o    : out std_logic_vector(WB_DAT_W-1 downto 0); -- read data
-    wb_we_i     : in  std_logic;        -- write enable
-    wb_sel_i    : in  std_logic_vector(WB_DAT_W/WB_GRAN-1 downto 0); -- write byte valid strobe
-    wb_stb_i    : in  std_logic;        -- slave select 
-    wb_ack_o    : out std_logic;        -- slave acknowledge
-    wb_cyc_i    : in  std_logic         -- bus cycle valid
-     
+    wb_slave    : in  t_wb_slave    
 );
 end wb_slave_interface;
 
 architecture rtl of wb_slave_interface is
-
+    -- AXI style signals to connect to memory
+    signal valid    : std_logic;
+    signal ready    : std_logic;
+    signal address  : std_logic_vector(WB_ADR_W-1 downto 0);
+    signal wdata    : std_logic_vector(WB_DAT_W-1 downto 0);
+    signal rdata    : std_logic_vector(WB_DAT_W-1 downto 0);
+    signal write_en : std_logic;
+    signal byte_sel : std_logic_vector(WB_DAT_W/WB_GRAN-1 downto 0);
+    
 begin
 
 
