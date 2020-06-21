@@ -3,143 +3,69 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_display_control_behav.wdb" id="1">
+      <db_ref path="tb_wb_gpio_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
-            <top_module name="pkg_vga_params_1280_1024_60hz" />
-            <top_module name="tb_display_control" />
+            <top_module name="tb_wb_gpio" />
+            <top_module name="wb_pkg" />
+            <top_module name="wb_tb_pkg" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="405832fs"></ZoomStartTime>
-      <ZoomEndTime time="1520845fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="62889fs"></ZoomEndTime>
+      <Cursor1Time time="5000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="220"></NameColumnWidth>
-      <ValueColumnWidth column_width="94"></ValueColumnWidth>
+      <ValueColumnWidth column_width="78"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
-   <wvobject fp_name="/tb_display_control/pixelclk_108" type="logic">
-      <obj_property name="ElementShortName">pixelclk_108</obj_property>
-      <obj_property name="ObjectShortName">pixelclk_108</obj_property>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/tb_wb_gpio/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/reset_n" type="logic">
-      <obj_property name="ElementShortName">reset_n</obj_property>
-      <obj_property name="ObjectShortName">reset_n</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/VGA_RED" type="array">
-      <obj_property name="ElementShortName">VGA_RED[3:0]</obj_property>
-      <obj_property name="ObjectShortName">VGA_RED[3:0]</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/wb_mosi" type="array">
+      <obj_property name="ElementShortName">wb_mosi</obj_property>
+      <obj_property name="ObjectShortName">wb_mosi</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/VGA_GREEN" type="array">
-      <obj_property name="ElementShortName">VGA_GREEN[3:0]</obj_property>
-      <obj_property name="ObjectShortName">VGA_GREEN[3:0]</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/wb_miso" type="array">
+      <obj_property name="ElementShortName">wb_miso</obj_property>
+      <obj_property name="ObjectShortName">wb_miso</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/VGA_BLUE" type="array">
-      <obj_property name="ElementShortName">VGA_BLUE[3:0]</obj_property>
-      <obj_property name="ObjectShortName">VGA_BLUE[3:0]</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/rdata" type="array">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/VGA_HS" type="logic">
-      <obj_property name="ElementShortName">VGA_HS</obj_property>
-      <obj_property name="ObjectShortName">VGA_HS</obj_property>
+   <wvobject fp_name="group464" type="group">
+      <obj_property name="label">peripherals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_wb_gpio/LEDS" type="array">
+         <obj_property name="ElementShortName">LEDS[15:0]</obj_property>
+         <obj_property name="ObjectShortName">LEDS[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_wb_gpio/SW" type="array">
+         <obj_property name="ElementShortName">SW[15:0]</obj_property>
+         <obj_property name="ObjectShortName">SW[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_wb_gpio/BTN" type="array">
+         <obj_property name="ElementShortName">BTN[4:0]</obj_property>
+         <obj_property name="ObjectShortName">BTN[4:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/VGA_VS" type="logic">
-      <obj_property name="ElementShortName">VGA_VS</obj_property>
-      <obj_property name="ObjectShortName">VGA_VS</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/memory_slave/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/h_count" type="other">
-      <obj_property name="ElementShortName">h_count</obj_property>
-      <obj_property name="ObjectShortName">h_count</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/h_count_d1" type="other">
-      <obj_property name="ElementShortName">h_count_d1</obj_property>
-      <obj_property name="ObjectShortName">h_count_d1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/h_count_d2" type="other">
-      <obj_property name="ElementShortName">h_count_d2</obj_property>
-      <obj_property name="ObjectShortName">h_count_d2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/v_count" type="other">
-      <obj_property name="ElementShortName">v_count</obj_property>
-      <obj_property name="ObjectShortName">v_count</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/v_count_d1" type="other">
-      <obj_property name="ElementShortName">v_count_d1</obj_property>
-      <obj_property name="ObjectShortName">v_count_d1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/v_count_d2" type="other">
-      <obj_property name="ElementShortName">v_count_d2</obj_property>
-      <obj_property name="ObjectShortName">v_count_d2</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/active_area" type="logic">
-      <obj_property name="ElementShortName">active_area</obj_property>
-      <obj_property name="ObjectShortName">active_area</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/char_x" type="other">
-      <obj_property name="ElementShortName">char_x</obj_property>
-      <obj_property name="ObjectShortName">char_x</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/char_y" type="other">
-      <obj_property name="ElementShortName">char_y</obj_property>
-      <obj_property name="ObjectShortName">char_y</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/char_address" type="other">
-      <obj_property name="ElementShortName">char_address</obj_property>
-      <obj_property name="ObjectShortName">char_address</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/make_char_green" type="logic">
-      <obj_property name="ElementShortName">make_char_green</obj_property>
-      <obj_property name="ObjectShortName">make_char_green</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/make_char_red" type="logic">
-      <obj_property name="ElementShortName">make_char_red</obj_property>
-      <obj_property name="ObjectShortName">make_char_red</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/addrb" type="array">
-      <obj_property name="ElementShortName">addrb[11:0]</obj_property>
-      <obj_property name="ObjectShortName">addrb[11:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/enb" type="logic">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/dob" type="array">
-      <obj_property name="ElementShortName">dob[7:0]</obj_property>
-      <obj_property name="ObjectShortName">dob[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/font_line" type="array">
-      <obj_property name="ElementShortName">font_line[7:0]</obj_property>
-      <obj_property name="ObjectShortName">font_line[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/charcode_base_address" type="array">
-      <obj_property name="ElementShortName">charcode_base_address[11:0]</obj_property>
-      <obj_property name="ObjectShortName">charcode_base_address[11:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/charcode_to_display" type="array">
-      <obj_property name="ElementShortName">charcode_to_display[11:0]</obj_property>
-      <obj_property name="ObjectShortName">charcode_to_display[11:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/font_row" type="other">
-      <obj_property name="ElementShortName">font_row</obj_property>
-      <obj_property name="ObjectShortName">font_row</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/vga_r2" type="array">
-      <obj_property name="ElementShortName">vga_r2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">vga_r2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/vga_g2" type="array">
-      <obj_property name="ElementShortName">vga_g2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">vga_g2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_display_control/u_display_control/vga_b2" type="array">
-      <obj_property name="ElementShortName">vga_b2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">vga_b2[3:0]</obj_property>
+   <wvobject fp_name="/tb_wb_gpio/memory_slave/reg_enable" type="logic">
+      <obj_property name="ElementShortName">reg_enable</obj_property>
+      <obj_property name="ObjectShortName">reg_enable</obj_property>
    </wvobject>
 </wave_config>

@@ -30,7 +30,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
-
 use work.wb_pkg.all;
 
 entity wb_slave_interface is
@@ -42,7 +41,8 @@ Generic(
 Port (
     wb_clk_i    : in  std_logic;        -- clock
     wb_rst_i    : in  std_logic;        -- reset
-    wb_slave    : in  t_wb_slave    
+    wb_mosi    : in  t_wb_mosi;   
+    wb_miso    : out t_wb_miso   
 );
 end wb_slave_interface;
 
